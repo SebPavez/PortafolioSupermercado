@@ -1,6 +1,6 @@
 # Portafolio caso 6: Supermercado
 
-**Integrantes:**
+>**Integrantes:**
 
--Benjamín Meneses
--Sebastián Pavez
+>-Benjamín Meneses.
+>-Sebastián Pavez.
