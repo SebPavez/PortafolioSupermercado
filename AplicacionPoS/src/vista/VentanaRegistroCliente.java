@@ -1,5 +1,6 @@
 package vista;
 
+import java.util.EnumSet;
 import modelo.*;
 
 /**
@@ -259,38 +260,100 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarRegistroActionPerformed
 
     private void cmbRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRegionActionPerformed
-        int opcionRegion =  this.cmbRegion.getSelectedIndex();
+        int opcionRegion = Regiones.valueOf(this.cmbRegion.getSelectedItem().toString()).ordinal();        
+        EnumSet<Provincias> set;
+        EnumSet<Comunas> setComunas;
         switch(opcionRegion){
+            case 0:                
+                set = EnumSet.range(Provincias.Santiago, Provincias.Talagante);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Santiago, Comunas.Peñaflor);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                break;
             case 1:
+                set = EnumSet.range(Provincias.Arica, Provincias.Parinacota);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Arica, Comunas.GeneralLagos);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 2:
+                set = EnumSet.range(Provincias.Iquique, Provincias.Tamarugal);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Iquique, Comunas.Pica);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 3:
+                set = EnumSet.range(Provincias.Antofagasta, Provincias.Tocopilla);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Antofagasta, Comunas.MariaElena);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 4:
+                set = EnumSet.range(Provincias.Copiapo, Provincias.Huasco);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Copiapo, Comunas.Huasco);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 5:
+                set = EnumSet.range(Provincias.Elqui, Provincias.Limari);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.LaSerena, Comunas.RioHurtado);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 6:
+                set = EnumSet.range(Provincias.Valparaiso, Provincias.MargaMarga);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Valparaiso, Comunas.Olmué);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 7: 
+                set = EnumSet.range(Provincias.Cachapoal, Provincias.Colchagua);                                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Rancagua, Comunas.SantaCruz);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;                    
             case 8:
+                set = EnumSet.range(Provincias.Talca, Provincias.Linares);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Talca, Comunas.YerbasBuenas);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 9:
+                set = EnumSet.range(Provincias.Concepcion, Provincias.Ñuble);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Concepcion, Comunas.Yungay);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 10:
+                set = EnumSet.range(Provincias.Cautin, Provincias.Malleco);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Temuco, Comunas.Victoria);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 11:
+                set = EnumSet.range(Provincias.Valdivia, Provincias.Ranco);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Valdivia, Comunas.RioBueno);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 12:
+                set = EnumSet.range(Provincias.Llanquihue, Provincias.Palena);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.PuertoMontt, Comunas.Palena);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 13:
+                set = EnumSet.range(Provincias.Coihaique, Provincias.GeneralCarrera);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.Coihaique, Comunas.RíoIbanez);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
                 break;
             case 14:
-                break;
-            case 15:
-                break;                   
+                set = EnumSet.range(Provincias.Magallanes, Provincias.UltimaEsperanza);                 
+                cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
+                setComunas = EnumSet.range(Comunas.PuntaArenas, Comunas.TorresDelPaine);                
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                break;            
         }
     }//GEN-LAST:event_cmbRegionActionPerformed
 

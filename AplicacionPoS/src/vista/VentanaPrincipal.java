@@ -35,7 +35,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnConsultarStock = new javax.swing.JButton();
         btnAnularVenta = new javax.swing.JButton();
         btnRegistarCliente = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnCerrarCaja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +71,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Cerrar caja");
+        btnCerrarCaja.setText("Cerrar caja");
+        btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarCajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,7 +93,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnRegistarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)))
+                        .addComponent(btnCerrarCaja)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,7 +111,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnRegistarCliente))
                     .addComponent(jScrollPane1))
                 .addGap(38, 38, 38)
-                .addComponent(jButton5)
+                .addComponent(btnCerrarCaja)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -136,6 +141,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistarClienteActionPerformed
+
+    private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
+        VentanaLogin ventana = new VentanaLogin();
+        ventana.setVisible(true);
+        this.dispose();                
+    }//GEN-LAST:event_btnCerrarCajaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,10 +185,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnularVenta;
+    private javax.swing.JButton btnCerrarCaja;
     private javax.swing.JButton btnConsultarStock;
     private javax.swing.JButton btnRealizarVenta;
     private javax.swing.JButton btnRegistarCliente;
-    private javax.swing.JButton jButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
