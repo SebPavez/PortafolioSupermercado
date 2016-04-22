@@ -1,4 +1,4 @@
-package modelo;
+package negocio;
 
 /**
  * Enumeradores para provincias de Chile

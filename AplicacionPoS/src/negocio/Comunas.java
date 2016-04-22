@@ -1,4 +1,4 @@
-package modelo;
+package negocio;
 
 /**
  * Enumeradores para comunas de Chile

@@ -1,7 +1,10 @@
 package vista;
 
+import negocio.Comunas;
+import negocio.Provincias;
+import negocio.Persona;
+import negocio.Regiones;
 import java.util.EnumSet;
-import modelo.*;
 
 /**
  *
