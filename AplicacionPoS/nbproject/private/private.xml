@@ -3,10 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Comunas.java</file>
-            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Persona.java</file>
-            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/BaseDao.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Caja.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Detalle_Venta.java</file>
             <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/vista/VentanaAnularVenta.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Terminal.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOCaja.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOFuncionarioImplementado.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Turno.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOCliente.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Comunas.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Producto.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Provincias.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Cliente.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Proveedor.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOFuncionario.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOCajaImplementado.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOVenta.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/negocio/Venta.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/BaseDao.java</file>
+            <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/AccesoDatos/DAOClienteImplementado.java</file>
             <file>file:/C:/Users/Sebastian%20Pavez/Documents/GitHub/PortafolioSupermercado/AplicacionPoS/src/vista/VentanaConsultaStock.java</file>
         </group>
     </open-files>
