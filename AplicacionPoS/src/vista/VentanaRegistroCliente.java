@@ -1,10 +1,12 @@
 package vista;
 
+import AccesoDatos.DAOClienteImplementado;
 import negocio.Comunas;
 import negocio.Provincias;
 import negocio.Persona;
 import negocio.Regiones;
 import java.util.EnumSet;
+import negocio.Cliente;
 
 /**
  *
@@ -230,7 +232,7 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
 
     private void btnRegistrarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarInformacionActionPerformed
         try{
-            Persona personaRegistrada = new Persona();
+            Cliente personaRegistrada = new Cliente();
             personaRegistrada.setApellidoMaterno(this.txtApellidoMaterno.getText());
             personaRegistrada.setApellidoPaterno(this.txtApellidoPaterno.getText());
             personaRegistrada.setComuna(this.cmbComuna.getSelectedItem().toString());
@@ -248,11 +250,17 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
             personaRegistrada.setProvincia(this.cmbProvincia.getSelectedItem().toString());
             personaRegistrada.setRegion(this.cmbProvincia.getSelectedItem().toString());
             personaRegistrada.setRut(this.txtRutCliente.getText());
+            DAOClienteImplementado maquina = new DAOClienteImplementado();
+            if (maquina.agregar(personaRegistrada))
+                javax.swing.JOptionPane.showMessageDialog(this, "Cliente agregado con éxito");
+            else
+                javax.swing.JOptionPane.showMessageDialog(this, "falla en el registro del cliente");
             System.out.println(personaRegistrada.toString());
+            
         }
         catch(Exception e)
         {
-            System.out.println("Error en registro: "+e.getMessage());
+            System.out.println("Error en registro: "+e.getMessage());            
         }        
     }//GEN-LAST:event_btnRegistrarInformacionActionPerformed
 

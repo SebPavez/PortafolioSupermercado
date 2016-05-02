@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
 import negocio.Caja;
 import sql.ConexionOracle;
 
@@ -85,7 +83,7 @@ public class DAOCajaImplementado implements DAOCaja{
     }
 
     @Override
-    public Caja buscar(int id) {
+    public Caja buscar(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

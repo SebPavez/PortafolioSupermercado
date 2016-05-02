@@ -24,84 +24,54 @@ public class Persona {
         return nombres;
     }
 
-    public boolean setNombres(String nombres) {
+    public void setNombres(String nombres) {
         if(!nombres.isEmpty())
-        {
             this.nombres = nombres;
-            return true;
-        }
-        return false;
     }
 
     public String getApellidoPaterno() {
         return apellidoPaterno;
     }
 
-    public boolean setApellidoPaterno(String apellidoPaterno) {
+    public void setApellidoPaterno(String apellidoPaterno) {
         if(!apellidoPaterno.isEmpty())
-        {
             this.apellidoPaterno = apellidoPaterno;
-            return true;
-        }
-        return false;        
     }
 
     public String getApellidoMaterno() {
         return apellidoMaterno;
     }
 
-    public boolean setApellidoMaterno(String apellidoMaterno) {
+    public void setApellidoMaterno(String apellidoMaterno) {
         if(!apellidoMaterno.isEmpty())
-        {
             this.apellidoMaterno = apellidoMaterno;
-            return true;
-        }
-        return false;
     }
 
     public String getRut() {
         return rut;
     }
 
-    public boolean setRut(String rut) {
-        Pattern regex = Pattern.compile("^([0-9]+-[0-9K])$");
-        //String dv = rut.substring(rut.length()-1, 1);
-        Matcher valor = regex.matcher(rut.replace('.', ' ').toUpperCase());        
-        if(valor.matches())
-        {
+    public void setRut(String rut) {
+        if(!rut.isEmpty())
             this.rut = rut;
-            return true;
-        }
-        return false;
     }
 
     public String getDireccion() {
         return direccion;
     }
 
-    public boolean setDireccion(String direccion) {
-        if(!direccion.isEmpty())
-        {
-            this.direccion = direccion;
-            return true;
-        }
-        return false;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getRegion() {
         return region;
     }
 
-    public boolean setRegion(String region) {
-        if(!region.isEmpty())
-        {
-            this.region = region;
-            return true;
-        }
-        return false;
+    public void setRegion(String region) {
+        this.region = region;
     }
-        
-    
+
     public String getProvincia() {
         return provincia;
     }
@@ -122,26 +92,16 @@ public class Persona {
         return genero;
     }
 
-    public boolean setGenero(String genero) {
-        if(!genero.isEmpty())
-        {
-            this.genero = genero;
-            return true;
-        }
-        return false;        
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public boolean setFechaNacimiento(String fechaNacimiento) {
-        if(!fechaNacimiento.isEmpty())
-        {
-            this.fechaNacimiento = fechaNacimiento;
-            return true;
-        }
-        return false;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCorreoElectronico() {
@@ -158,7 +118,7 @@ public class Persona {
 
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
-    }
+    }  
 
     @Override
     public String toString() {

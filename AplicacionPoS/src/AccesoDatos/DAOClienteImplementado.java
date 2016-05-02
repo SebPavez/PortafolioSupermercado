@@ -17,40 +17,46 @@ public class DAOClienteImplementado implements DAOCliente{
     public boolean agregar(Cliente dto) {
         try{
             Connection conexion=ConexionOracle.getConexion();
-            String query= "INSERT INTO cliente values ?,?,?,?,?,?,?,?";
+            String query= "INSERT INTO cliente("
+                    + "rut, "
+                    + "nombre, "
+                    + "apellido_paterno, "
+                    + "apellido_materno, "
+                    + "genero, "
+                    + "fecha_nacimiento, "
+                    + "total_gastado) "
+                    + "values ?,?,?,?,?,?,?";
             PreparedStatement insercion= conexion.prepareStatement(query);
             insercion.setString(0, dto.getRut());
             insercion.setString(1, dto.getNombres());
             insercion.setString(2, dto.getApellidoPaterno());
             insercion.setString(3, dto.getApellidoMaterno());
-            insercion.setInt(4, 22);//dato no contemplado
-            insercion.setString(5, dto.getGenero());
-            insercion.setString(6, dto.getFechaNacimiento());
-            insercion.setInt(7, 0);
+            insercion.setString(4, dto.getGenero());
+            insercion.setString(5, dto.getFechaNacimiento());
+            insercion.setInt(6, 0);
             insercion.execute();
             insercion.close();
             conexion.close();
             return true;            
         }
         catch (SQLException w){
-            System.out.println("Falla SQL al agregar cliente en BD");
+            System.out.println("Falla SQL al agregar cliente en BD: "+w.getMessage());
             return false;
         }
         catch (Exception r){
-            System.out.println("Falla al agregar cliente en BD");
+            System.out.println("Falla al agregar cliente en BD: "+r.getMessage());
             return false;
-        }
-        
+        }        
     }
 
     @Override
-    public Cliente buscar(int rut) {
+    public Cliente buscar(String rut) {
         Cliente resultado = new Cliente();
         try {            
             Connection conexion=ConexionOracle.getConexion();
             String query= "SELECT * FROM cliente where rut=?";
             PreparedStatement busqueda= conexion.prepareStatement(query);
-            busqueda.setInt(0, rut);
+            busqueda.setString(0, rut);
             ResultSet rs = busqueda.executeQuery();
             while(rs.next())
             {
