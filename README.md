@@ -1,7 +1,7 @@
-# Portafolio caso 6: Supermercado
+#Trabajo ingeniería de software: Supermercado
 
 >**Integrantes:**
 
->-Benjamín Meneses.
+>-Miguel Arce.
 
 >-Sebastián Pavez.
