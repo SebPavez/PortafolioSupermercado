@@ -1,24 +1,22 @@
 package vista;
 
+import AccesoDatos.DaoCliente;
+import AccesoDatos.DaoUsuario;
+import negocio.Comunas;
+import negocio.Provincias;
+import negocio.Persona;
+import negocio.Regiones;
 import java.util.EnumSet;
-import modelo.*;
+import javax.swing.JOptionPane;
+import negocio.Cliente;
+import negocio.Usuario;
 
-/**
- *
- * @author Sebastian Pavez
- */
 public class VentanaRegistroCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaRegistroCliente
-     */
     public VentanaRegistroCliente() {
-        initComponents();        
-        cmbRegion.setModel(new javax.swing.DefaultComboBoxModel(Regiones.values()));
-        cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(Provincias.values()));
-        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(Comunas.values()));       
+        initComponents();
+        limpiarPantalla();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +37,6 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         txtNombresCliente = new javax.swing.JTextField();
         txtApellidoPaterno = new javax.swing.JTextField();
         txtApellidoMaterno = new javax.swing.JTextField();
@@ -54,9 +51,12 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
         cmbComuna = new javax.swing.JComboBox();
         rdbMasculino = new javax.swing.JRadioButton();
         rdbFemenino = new javax.swing.JRadioButton();
-        txtFechaNacimiento = new javax.swing.JTextField();
         txtCorreoElectronico = new javax.swing.JTextField();
         txtNumeroTelefonico = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtContraseña1 = new javax.swing.JPasswordField();
+        txtContraseña2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +77,6 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
         jLabel8.setText("Comuna:");
 
         jLabel9.setText("Género:");
-
-        jLabel10.setText("Fecha de Nacimiento:");
 
         jLabel11.setText("Correo Electrónico:");
 
@@ -115,6 +113,10 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
         btnGrpGenero.add(rdbFemenino);
         rdbFemenino.setText("Femenino");
 
+        jLabel13.setText("Contraseña");
+
+        jLabel14.setText("Confirmar Contraseña");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +126,6 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel10)
                     .addComponent(jLabel9)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
@@ -133,7 +134,11 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel12)
-                        .addComponent(jLabel11))
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel14)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel13)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(10, 10, 10)))
@@ -147,19 +152,20 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
                     .addComponent(cmbRegion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbProvincia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbComuna, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtFechaNacimiento)
                     .addComponent(txtCorreoElectronico)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtContraseña2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtContraseña1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(rdbMasculino)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rdbFemenino))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(btnRegistrarInformacion)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelarRegistro))
-                            .addComponent(txtNumeroTelefonico))
+                            .addComponent(txtNumeroTelefonico, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(71, 71, 71))
         );
@@ -198,16 +204,12 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cmbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(rdbMasculino)
                     .addComponent(rdbFemenino))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,7 +217,15 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtNumeroTelefonico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtContraseña1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtContraseña2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarInformacion)
                     .addComponent(btnCancelarRegistro))
@@ -226,134 +236,160 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarInformacionActionPerformed
-        try{
-            Persona personaRegistrada = new Persona();
-            personaRegistrada.setApellidoMaterno(this.txtApellidoMaterno.getText());
-            personaRegistrada.setApellidoPaterno(this.txtApellidoPaterno.getText());
-            personaRegistrada.setComuna(this.cmbComuna.getSelectedItem().toString());
-            personaRegistrada.setCorreoElectronico(this.txtCorreoElectronico.getText());
-            personaRegistrada.setDireccion(this.txtDireccion.getText());
-            personaRegistrada.setFechaNacimiento(this.txtFechaNacimiento.getText());
-            if(this.rdbFemenino.isSelected())
-                personaRegistrada.setGenero("femenino");
-            else if (this.rdbMasculino.isSelected()) 
-                personaRegistrada.setGenero("masculino");
-            else
-                personaRegistrada.setGenero(null);
-            personaRegistrada.setNombres(this.txtNombresCliente.getText());
-            personaRegistrada.setNumeroTelefono(this.txtNumeroTelefonico.getText());
-            personaRegistrada.setProvincia(this.cmbProvincia.getSelectedItem().toString());
-            personaRegistrada.setRegion(this.cmbProvincia.getSelectedItem().toString());
-            personaRegistrada.setRut(this.txtRutCliente.getText());
-            System.out.println(personaRegistrada.toString());
+        if (txtApellidoMaterno.getText().isEmpty() || txtApellidoPaterno.getText().isEmpty()
+                || txtContraseña1.getText().isEmpty() || txtContraseña2.getText().isEmpty()
+                || txtCorreoElectronico.getText().isEmpty() || txtDireccion.getText().isEmpty()
+                || txtNombresCliente.getText().isEmpty() || txtNumeroTelefonico.getText().isEmpty()
+                || txtRutCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese todos los campos.");
+        } else {
+            if (DaoCliente.validarRut(txtRutCliente.getText())) {
+                if (DaoCliente.validarCorreo(txtCorreoElectronico.getText())) {
+                    if (!txtContraseña1.getText().equals(txtContraseña2.getText())) {
+                        JOptionPane.showMessageDialog(null, "Las contraseñas no coiniciden.");
+                    } else {
+                        try {
+                            Cliente cliente = new Cliente();
+                            Usuario usuario = new Usuario();
+                            usuario.setContraseña(txtContraseña1.getText());
+
+                            cliente.setApellidoMaterno(this.txtApellidoMaterno.getText());
+                            cliente.setApellidoPaterno(this.txtApellidoPaterno.getText());
+                            cliente.setComuna(this.cmbComuna.getSelectedItem().toString());
+                            cliente.setCorreoElectronico(this.txtCorreoElectronico.getText());
+                            cliente.setDireccion(this.txtDireccion.getText());
+                            if (this.rdbFemenino.isSelected()) {
+                                cliente.setGenero("F");
+                            } else {
+                                cliente.setGenero("M");
+                            }
+                            cliente.setNombres(this.txtNombresCliente.getText());
+                            cliente.setNumeroTelefono(this.txtNumeroTelefonico.getText());
+                            cliente.setProvincia(this.cmbProvincia.getSelectedItem().toString());
+                            cliente.setRegion(this.cmbProvincia.getSelectedItem().toString());
+                            cliente.setRut(this.txtRutCliente.getText());
+                            DaoUsuario.agregarUsuario(usuario);
+                            DaoCliente.agregarCliente(cliente);
+                            JOptionPane.showMessageDialog(null, "AGREGADO!!!");
+                            VentanaPrincipal ventana = new VentanaPrincipal();
+                            ventana.setVisible(true);
+                            this.dispose();
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Error en registro: " + e.getMessage() + " .Intente otra vez.");
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe un cliente con el correo ingresado.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya existe un cliente con el rut ingresado.");
+            }
         }
-        catch(Exception e)
-        {
-            System.out.println("Error en registro: "+e.getMessage());
-        }        
     }//GEN-LAST:event_btnRegistrarInformacionActionPerformed
 
     private void btnCancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarRegistroActionPerformed
-        DialogoEstaRegistrado dialogo = new DialogoEstaRegistrado();
-        dialogo.setVisible(true);
-        this.dispose();
+        if (JOptionPane.showConfirmDialog(null, "Estas seguro?") == 0) {
+            VentanaPrincipal ventana = new VentanaPrincipal();
+            ventana.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCancelarRegistroActionPerformed
 
     private void cmbRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRegionActionPerformed
-        int opcionRegion = Regiones.valueOf(this.cmbRegion.getSelectedItem().toString()).ordinal();        
+        int opcionRegion = Regiones.valueOf(this.cmbRegion.getSelectedItem().toString()).ordinal();
         EnumSet<Provincias> set;
         EnumSet<Comunas> setComunas;
-        switch(opcionRegion){
-            case 0:                
-                set = EnumSet.range(Provincias.Santiago, Provincias.Talagante);                 
+        switch (opcionRegion) {
+            case 0:
+                set = EnumSet.range(Provincias.Santiago, Provincias.Talagante);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Santiago, Comunas.Peñaflor);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Santiago, Comunas.Peñaflor);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 1:
-                set = EnumSet.range(Provincias.Arica, Provincias.Parinacota);                 
+                set = EnumSet.range(Provincias.Arica, Provincias.Parinacota);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Arica, Comunas.GeneralLagos);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Arica, Comunas.GeneralLagos);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 2:
-                set = EnumSet.range(Provincias.Iquique, Provincias.Tamarugal);                 
+                set = EnumSet.range(Provincias.Iquique, Provincias.Tamarugal);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Iquique, Comunas.Pica);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Iquique, Comunas.Pica);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 3:
-                set = EnumSet.range(Provincias.Antofagasta, Provincias.Tocopilla);                 
+                set = EnumSet.range(Provincias.Antofagasta, Provincias.Tocopilla);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Antofagasta, Comunas.MariaElena);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Antofagasta, Comunas.MariaElena);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 4:
-                set = EnumSet.range(Provincias.Copiapo, Provincias.Huasco);                 
+                set = EnumSet.range(Provincias.Copiapo, Provincias.Huasco);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Copiapo, Comunas.Huasco);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Copiapo, Comunas.Huasco);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 5:
-                set = EnumSet.range(Provincias.Elqui, Provincias.Limari);                 
+                set = EnumSet.range(Provincias.Elqui, Provincias.Limari);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.LaSerena, Comunas.RioHurtado);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.LaSerena, Comunas.RioHurtado);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 6:
-                set = EnumSet.range(Provincias.Valparaiso, Provincias.MargaMarga);                 
+                set = EnumSet.range(Provincias.Valparaiso, Provincias.MargaMarga);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Valparaiso, Comunas.Olmué);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Valparaiso, Comunas.Olmué);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
-            case 7: 
-                set = EnumSet.range(Provincias.Cachapoal, Provincias.Colchagua);                                 
+            case 7:
+                set = EnumSet.range(Provincias.Cachapoal, Provincias.Colchagua);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Rancagua, Comunas.SantaCruz);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
-                break;                    
+                setComunas = EnumSet.range(Comunas.Rancagua, Comunas.SantaCruz);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
+                break;
             case 8:
-                set = EnumSet.range(Provincias.Talca, Provincias.Linares);                 
+                set = EnumSet.range(Provincias.Talca, Provincias.Linares);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Talca, Comunas.YerbasBuenas);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Talca, Comunas.YerbasBuenas);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 9:
-                set = EnumSet.range(Provincias.Concepcion, Provincias.Ñuble);                 
+                set = EnumSet.range(Provincias.Concepcion, Provincias.Ñuble);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Concepcion, Comunas.Yungay);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Concepcion, Comunas.Yungay);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 10:
-                set = EnumSet.range(Provincias.Cautin, Provincias.Malleco);                 
+                set = EnumSet.range(Provincias.Cautin, Provincias.Malleco);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Temuco, Comunas.Victoria);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Temuco, Comunas.Victoria);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 11:
-                set = EnumSet.range(Provincias.Valdivia, Provincias.Ranco);                 
+                set = EnumSet.range(Provincias.Valdivia, Provincias.Ranco);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Valdivia, Comunas.RioBueno);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Valdivia, Comunas.RioBueno);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 12:
-                set = EnumSet.range(Provincias.Llanquihue, Provincias.Palena);                 
+                set = EnumSet.range(Provincias.Llanquihue, Provincias.Palena);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.PuertoMontt, Comunas.Palena);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.PuertoMontt, Comunas.Palena);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 13:
-                set = EnumSet.range(Provincias.Coihaique, Provincias.GeneralCarrera);                 
+                set = EnumSet.range(Provincias.Coihaique, Provincias.GeneralCarrera);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.Coihaique, Comunas.RíoIbanez);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
+                setComunas = EnumSet.range(Comunas.Coihaique, Comunas.RíoIbanez);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
                 break;
             case 14:
-                set = EnumSet.range(Provincias.Magallanes, Provincias.UltimaEsperanza);                 
+                set = EnumSet.range(Provincias.Magallanes, Provincias.UltimaEsperanza);
                 cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(set.toArray()));
-                setComunas = EnumSet.range(Comunas.PuntaArenas, Comunas.TorresDelPaine);                
-                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));                      
-                break;            
+                setComunas = EnumSet.range(Comunas.PuntaArenas, Comunas.TorresDelPaine);
+                cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(setComunas.toArray()));
+                break;
         }
     }//GEN-LAST:event_cmbRegionActionPerformed
 
@@ -400,9 +436,10 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbProvincia;
     private javax.swing.JComboBox cmbRegion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -415,11 +452,26 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbMasculino;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
+    private javax.swing.JPasswordField txtContraseña1;
+    private javax.swing.JPasswordField txtContraseña2;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNombresCliente;
     private javax.swing.JTextField txtNumeroTelefonico;
     private javax.swing.JTextField txtRutCliente;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarPantalla() {
+        cmbRegion.setModel(new javax.swing.DefaultComboBoxModel(Regiones.values()));
+        cmbProvincia.setModel(new javax.swing.DefaultComboBoxModel(Provincias.values()));
+        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel(Comunas.values()));
+        rdbMasculino.setSelected(true);
+        txtApellidoMaterno.setText(new String());
+        txtApellidoPaterno.setText(new String());
+        txtCorreoElectronico.setText(new String());
+        txtDireccion.setText(new String());
+        txtNombresCliente.setText(new String());
+        txtNumeroTelefonico.setText(new String());
+        txtRutCliente.setText(new String());
+    }
 }

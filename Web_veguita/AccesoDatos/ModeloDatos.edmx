@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModeloDatos.Store" Alias="Self" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModeloDatosStoreContainer">
+          <EntitySet Name="CAJA" EntityType="ModeloDatos.Store.CAJA" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="CLIENTE" EntityType="ModeloDatos.Store.CLIENTE" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="ModeloDatos.Store.DETALLE_VENTA" store:Type="Tables" store:Schema="LA-VEGUITA" store:Name="DETALLE_VENTA">
+            <DefiningQuery>SELECT 
+      "DETALLE_VENTA"."PRODUCTO_ID_PRODUCTO" AS "PRODUCTO_ID_PRODUCTO", 
+      "DETALLE_VENTA"."VENTA_ID_VENTA" AS "VENTA_ID_VENTA", 
+      "DETALLE_VENTA"."CANTIDAD" AS "CANTIDAD", 
+      "DETALLE_VENTA"."SUB_TOTAL" AS "SUB_TOTAL"
+      FROM "LA-VEGUITA"."DETALLE_VENTA" "DETALLE_VENTA"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FUNCIONARIO" EntityType="ModeloDatos.Store.FUNCIONARIO" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="PRODUCTO" EntityType="ModeloDatos.Store.PRODUCTO" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="PROVEEDOR" EntityType="ModeloDatos.Store.PROVEEDOR" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="REGISTRO_CORREO" EntityType="ModeloDatos.Store.REGISTRO_CORREO" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="TERMINAL" EntityType="ModeloDatos.Store.TERMINAL" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="TURNO" EntityType="ModeloDatos.Store.TURNO" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="USUARIO" EntityType="ModeloDatos.Store.USUARIO" store:Type="Tables" Schema="LA-VEGUITA" />
+          <EntitySet Name="VENTA" EntityType="ModeloDatos.Store.VENTA" store:Type="Tables" Schema="LA-VEGUITA" />
+          <AssociationSet Name="CLIENTE_USUARIO_FK" Association="ModeloDatos.Store.CLIENTE_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLEVENTA_PRODUCTO_FK" Association="ModeloDatos.Store.DETALLEVENTA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLEVENTA_VENTA_FK" Association="ModeloDatos.Store.DETALLEVENTA_VENTA_FK">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FUNCIONARIO_TERMINAL_FK" Association="ModeloDatos.Store.FUNCIONARIO_TERMINAL_FK">
+            <End Role="TERMINAL" EntitySet="TERMINAL" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FUNCIONARIO_USUARIO_FK" Association="ModeloDatos.Store.FUNCIONARIO_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="ModeloDatos.Store.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTROCORREO_VENTA_FK" Association="ModeloDatos.Store.REGISTROCORREO_VENTA_FK">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="REGISTRO_CORREO" EntitySet="REGISTRO_CORREO" />
+          </AssociationSet>
+          <AssociationSet Name="TURNO_CAJA_FK" Association="ModeloDatos.Store.TURNO_CAJA_FK">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="TURNO" EntitySet="TURNO" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_CAJA_FK" Association="ModeloDatos.Store.VENTA_CAJA_FK">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_CLIENTE_FK" Association="ModeloDatos.Store.VENTA_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_TERMINAL_FK" Association="ModeloDatos.Store.VENTA_TERMINAL_FK">
+            <End Role="TERMINAL" EntitySet="TERMINAL" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAJA">
+          <Key>
+            <PropertyRef Name="ID_CAJA" />
+          </Key>
+          <Property Name="ID_CAJA" Type="number" Nullable="false" />
+          <Property Name="TOTAL_VENDIDO" Type="number" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="RUT_CL" />
+          </Key>
+          <Property Name="RUT_CL" Type="varchar2" Nullable="false" MaxLength="10" />
+          <Property Name="NOMBRE_CL" Type="varchar2" Nullable="false" MaxLength="35" />
+          <Property Name="APE_PATERNO_CL" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="APE_MATERNO_CL" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="GENERO_CL" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="REGION_CL" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="COMUNA_CL" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="PROVINCIA_CL" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="CORREO_ELECTRONICO" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="TOTAL_GASTADO" Type="number" Nullable="false" />
+          <Property Name="USUARIO_ID_USUARIO" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LA-VEGUITA.DETALLE_VENTA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            <PropertyRef Name="VENTA_ID_VENTA" />
+            <PropertyRef Name="CANTIDAD" />
+            <PropertyRef Name="SUB_TOTAL" />
+          </Key>
+          <Property Name="PRODUCTO_ID_PRODUCTO" Type="number" Nullable="false" />
+          <Property Name="VENTA_ID_VENTA" Type="number" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Nullable="false" />
+          <Property Name="SUB_TOTAL" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="RUT_FUN" />
+          </Key>
+          <Property Name="RUT_FUN" Type="varchar2" Nullable="false" MaxLength="10" />
+          <Property Name="NOMBRE_FUN" Type="varchar2" Nullable="false" MaxLength="35" />
+          <Property Name="APELLIDO_PATERNO_FUN" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="APELLIDO_MATERNO_FUN" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="GENERO_FUN" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="REGION_FUN" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="COMUNA_FUN" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="PROVINCIA_FUN" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="FECHA_CONTRATO_FUN" Type="date" Nullable="false" />
+          <Property Name="SUELDO_BASE_FUN" Type="number" Nullable="false" />
+          <Property Name="USUARIO_ID_USUARIO" Type="number" Nullable="false" />
+          <Property Name="TERMINAL_ID_TERMINAL" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="number" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="STOCK" Type="number" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Nullable="false" />
+          <Property Name="CATEGORIA" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="PROVEEDOR_ID_PROVEEDOR" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROVEEDOR" />
+          </Key>
+          <Property Name="ID_PROVEEDOR" Type="number" Nullable="false" />
+          <Property Name="NOMBRE_PROVEEDOR" Type="varchar2" Nullable="false" MaxLength="25" />
+          <Property Name="DIRECCION" Type="varchar2" Nullable="false" MaxLength="35" />
+          <Property Name="TELEFONO_PROVEEDOR" Type="number" />
+        </EntityType>
+        <EntityType Name="REGISTRO_CORREO">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="number" Nullable="false" />
+          <Property Name="FUE_ENVIADO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="FECHA_ENVIO" Type="date" />
+          <Property Name="FK_ID_VENTA" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TERMINAL">
+          <Key>
+            <PropertyRef Name="ID_TERMINAL" />
+          </Key>
+          <Property Name="ID_TERMINAL" Type="number" Nullable="false" />
+          <Property Name="FECHA_ADQUISICION" Type="date" Nullable="false" />
+          <Property Name="FECHA_ULTIMA_MANTENCION" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TURNO">
+          <Key>
+            <PropertyRef Name="ID_TURNO" />
+          </Key>
+          <Property Name="ID_TURNO" Type="number" Nullable="false" />
+          <Property Name="HORA_INICIO" Type="date" Nullable="false" />
+          <Property Name="HORA_TERMINO" Type="date" Nullable="false" />
+          <Property Name="CAJA_ID_CAJA" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="varchar2" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Name="ID_VENTA" Type="number" Nullable="false" />
+          <Property Name="FECHA_VENTA" Type="date" Nullable="false" />
+          <Property Name="TOTAL_VENTA" Type="number" Nullable="false" />
+          <Property Name="CLIENTE_RUT" Type="varchar2" Nullable="false" MaxLength="10" />
+          <Property Name="TERMINAL_ID_TERMINAL" Type="number" Nullable="false" />
+          <Property Name="CAJA_ID_CAJA" Type="number" Nullable="false" />
+        </EntityType>
+        <Association Name="CLIENTE_USUARIO_FK">
+          <End Role="USUARIO" Type="ModeloDatos.Store.USUARIO" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="ModeloDatos.Store.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="USUARIO_ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLEVENTA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="ModeloDatos.Store.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLE_VENTA" Type="ModeloDatos.Store.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLEVENTA_VENTA_FK">
+          <End Role="VENTA" Type="ModeloDatos.Store.VENTA" Multiplicity="1" />
+          <End Role="DETALLE_VENTA" Type="ModeloDatos.Store.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID_VENTA" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="VENTA_ID_VENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FUNCIONARIO_TERMINAL_FK">
+          <End Role="TERMINAL" Type="ModeloDatos.Store.TERMINAL" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="ModeloDatos.Store.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINAL">
+              <PropertyRef Name="ID_TERMINAL" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="TERMINAL_ID_TERMINAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FUNCIONARIO_USUARIO_FK">
+          <End Role="USUARIO" Type="ModeloDatos.Store.USUARIO" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="ModeloDatos.Store.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="USUARIO_ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="ModeloDatos.Store.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="ModeloDatos.Store.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTROCORREO_VENTA_FK">
+          <End Role="VENTA" Type="ModeloDatos.Store.VENTA" Multiplicity="1" />
+          <End Role="REGISTRO_CORREO" Type="ModeloDatos.Store.REGISTRO_CORREO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID_VENTA" />
+            </Principal>
+            <Dependent Role="REGISTRO_CORREO">
+              <PropertyRef Name="FK_ID_VENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TURNO_CAJA_FK">
+          <End Role="CAJA" Type="ModeloDatos.Store.CAJA" Multiplicity="1" />
+          <End Role="TURNO" Type="ModeloDatos.Store.TURNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="TURNO">
+              <PropertyRef Name="CAJA_ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_CAJA_FK">
+          <End Role="CAJA" Type="ModeloDatos.Store.CAJA" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.Store.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="CAJA_ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_CLIENTE_FK">
+          <End Role="CLIENTE" Type="ModeloDatos.Store.CLIENTE" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.Store.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CL" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="CLIENTE_RUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_TERMINAL_FK">
+          <End Role="TERMINAL" Type="ModeloDatos.Store.TERMINAL" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.Store.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINAL">
+              <PropertyRef Name="ID_TERMINAL" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="TERMINAL_ID_TERMINAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModeloDatos" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAJA" EntityType="ModeloDatos.CAJA" />
+          <EntitySet Name="CLIENTE" EntityType="ModeloDatos.CLIENTE" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="ModeloDatos.DETALLE_VENTA" />
+          <EntitySet Name="FUNCIONARIO" EntityType="ModeloDatos.FUNCIONARIO" />
+          <EntitySet Name="PRODUCTO" EntityType="ModeloDatos.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="ModeloDatos.PROVEEDOR" />
+          <EntitySet Name="REGISTRO_CORREO" EntityType="ModeloDatos.REGISTRO_CORREO" />
+          <EntitySet Name="TERMINAL" EntityType="ModeloDatos.TERMINAL" />
+          <EntitySet Name="TURNO" EntityType="ModeloDatos.TURNO" />
+          <EntitySet Name="USUARIO" EntityType="ModeloDatos.USUARIO" />
+          <EntitySet Name="VENTA" EntityType="ModeloDatos.VENTA" />
+          <AssociationSet Name="TURNO_CAJA_FK" Association="ModeloDatos.TURNO_CAJA_FK">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="TURNO" EntitySet="TURNO" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_CAJA_FK" Association="ModeloDatos.VENTA_CAJA_FK">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_USUARIO_FK" Association="ModeloDatos.CLIENTE_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_CLIENTE_FK" Association="ModeloDatos.VENTA_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLEVENTA_PRODUCTO_FK" Association="ModeloDatos.DETALLEVENTA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLEVENTA_VENTA_FK" Association="ModeloDatos.DETALLEVENTA_VENTA_FK">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FUNCIONARIO_TERMINAL_FK" Association="ModeloDatos.FUNCIONARIO_TERMINAL_FK">
+            <End Role="TERMINAL" EntitySet="TERMINAL" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FUNCIONARIO_USUARIO_FK" Association="ModeloDatos.FUNCIONARIO_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="ModeloDatos.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="REGISTROCORREO_VENTA_FK" Association="ModeloDatos.REGISTROCORREO_VENTA_FK">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="REGISTRO_CORREO" EntitySet="REGISTRO_CORREO" />
+          </AssociationSet>
+          <AssociationSet Name="VENTA_TERMINAL_FK" Association="ModeloDatos.VENTA_TERMINAL_FK">
+            <End Role="TERMINAL" EntitySet="TERMINAL" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAJA">
+          <Key>
+            <PropertyRef Name="ID_CAJA" />
+          </Key>
+          <Property Name="ID_CAJA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TOTAL_VENDIDO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="TURNO" Relationship="ModeloDatos.TURNO_CAJA_FK" FromRole="CAJA" ToRole="TURNO" />
+          <NavigationProperty Name="VENTA" Relationship="ModeloDatos.VENTA_CAJA_FK" FromRole="CAJA" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="RUT_CL" />
+          </Key>
+          <Property Name="RUT_CL" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="NOMBRE_CL" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="APE_PATERNO_CL" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="APE_MATERNO_CL" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="GENERO_CL" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="REGION_CL" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="COMUNA_CL" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="PROVINCIA_CL" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TOTAL_GASTADO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USUARIO_ID_USUARIO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="USUARIO" Relationship="ModeloDatos.CLIENTE_USUARIO_FK" FromRole="CLIENTE" ToRole="USUARIO" />
+          <NavigationProperty Name="VENTA" Relationship="ModeloDatos.VENTA_CLIENTE_FK" FromRole="CLIENTE" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            <PropertyRef Name="VENTA_ID_VENTA" />
+            <PropertyRef Name="CANTIDAD" />
+            <PropertyRef Name="SUB_TOTAL" />
+          </Key>
+          <Property Name="PRODUCTO_ID_PRODUCTO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="VENTA_ID_VENTA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CANTIDAD" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="SUB_TOTAL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="PRODUCTO" Relationship="ModeloDatos.DETALLEVENTA_PRODUCTO_FK" FromRole="DETALLE_VENTA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="VENTA" Relationship="ModeloDatos.DETALLEVENTA_VENTA_FK" FromRole="DETALLE_VENTA" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="RUT_FUN" />
+          </Key>
+          <Property Name="RUT_FUN" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="NOMBRE_FUN" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="APELLIDO_PATERNO_FUN" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="APELLIDO_MATERNO_FUN" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="GENERO_FUN" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="REGION_FUN" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="COMUNA_FUN" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="PROVINCIA_FUN" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="FECHA_CONTRATO_FUN" Type="DateTime" Nullable="false" />
+          <Property Name="SUELDO_BASE_FUN" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USUARIO_ID_USUARIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TERMINAL_ID_TERMINAL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="TERMINAL" Relationship="ModeloDatos.FUNCIONARIO_TERMINAL_FK" FromRole="FUNCIONARIO" ToRole="TERMINAL" />
+          <NavigationProperty Name="USUARIO" Relationship="ModeloDatos.FUNCIONARIO_USUARIO_FK" FromRole="FUNCIONARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="STOCK" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PRECIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CATEGORIA" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="PROVEEDOR_ID_PROVEEDOR" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="ModeloDatos.DETALLEVENTA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="ModeloDatos.PRODUCTO_PROVEEDOR_FK" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROVEEDOR" />
+          </Key>
+          <Property Name="ID_PROVEEDOR" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NOMBRE_PROVEEDOR" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="TELEFONO_PROVEEDOR" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="PRODUCTO" Relationship="ModeloDatos.PRODUCTO_PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="REGISTRO_CORREO">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FUE_ENVIADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="FECHA_ENVIO" Type="DateTime" />
+          <Property Name="FK_ID_VENTA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="VENTA" Relationship="ModeloDatos.REGISTROCORREO_VENTA_FK" FromRole="REGISTRO_CORREO" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="TERMINAL">
+          <Key>
+            <PropertyRef Name="ID_TERMINAL" />
+          </Key>
+          <Property Name="ID_TERMINAL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FECHA_ADQUISICION" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_ULTIMA_MANTENCION" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FUNCIONARIO" Relationship="ModeloDatos.FUNCIONARIO_TERMINAL_FK" FromRole="TERMINAL" ToRole="FUNCIONARIO" />
+          <NavigationProperty Name="VENTA" Relationship="ModeloDatos.VENTA_TERMINAL_FK" FromRole="TERMINAL" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="TURNO">
+          <Key>
+            <PropertyRef Name="ID_TURNO" />
+          </Key>
+          <Property Name="ID_TURNO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="HORA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="HORA_TERMINO" Type="DateTime" Nullable="false" />
+          <Property Name="CAJA_ID_CAJA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="CAJA" Relationship="ModeloDatos.TURNO_CAJA_FK" FromRole="TURNO" ToRole="CAJA" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CONTRASEÑA" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="ModeloDatos.CLIENTE_USUARIO_FK" FromRole="USUARIO" ToRole="CLIENTE" />
+          <NavigationProperty Name="FUNCIONARIO" Relationship="ModeloDatos.FUNCIONARIO_USUARIO_FK" FromRole="USUARIO" ToRole="FUNCIONARIO" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Name="ID_VENTA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FECHA_VENTA" Type="DateTime" Nullable="false" />
+          <Property Name="TOTAL_VENTA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CLIENTE_RUT" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="TERMINAL_ID_TERMINAL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CAJA_ID_CAJA" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="CAJA" Relationship="ModeloDatos.VENTA_CAJA_FK" FromRole="VENTA" ToRole="CAJA" />
+          <NavigationProperty Name="CLIENTE" Relationship="ModeloDatos.VENTA_CLIENTE_FK" FromRole="VENTA" ToRole="CLIENTE" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="ModeloDatos.DETALLEVENTA_VENTA_FK" FromRole="VENTA" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="REGISTRO_CORREO" Relationship="ModeloDatos.REGISTROCORREO_VENTA_FK" FromRole="VENTA" ToRole="REGISTRO_CORREO" />
+          <NavigationProperty Name="TERMINAL" Relationship="ModeloDatos.VENTA_TERMINAL_FK" FromRole="VENTA" ToRole="TERMINAL" />
+        </EntityType>
+        <Association Name="TURNO_CAJA_FK">
+          <End Role="CAJA" Type="ModeloDatos.CAJA" Multiplicity="1" />
+          <End Role="TURNO" Type="ModeloDatos.TURNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="TURNO">
+              <PropertyRef Name="CAJA_ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_CAJA_FK">
+          <End Role="CAJA" Type="ModeloDatos.CAJA" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="CAJA_ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_USUARIO_FK">
+          <End Role="USUARIO" Type="ModeloDatos.USUARIO" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="ModeloDatos.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="USUARIO_ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_CLIENTE_FK">
+          <End Role="CLIENTE" Type="ModeloDatos.CLIENTE" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="RUT_CL" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="CLIENTE_RUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLEVENTA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="ModeloDatos.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLE_VENTA" Type="ModeloDatos.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLEVENTA_VENTA_FK">
+          <End Role="VENTA" Type="ModeloDatos.VENTA" Multiplicity="1" />
+          <End Role="DETALLE_VENTA" Type="ModeloDatos.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID_VENTA" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="VENTA_ID_VENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FUNCIONARIO_TERMINAL_FK">
+          <End Role="TERMINAL" Type="ModeloDatos.TERMINAL" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="ModeloDatos.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINAL">
+              <PropertyRef Name="ID_TERMINAL" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="TERMINAL_ID_TERMINAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FUNCIONARIO_USUARIO_FK">
+          <End Role="USUARIO" Type="ModeloDatos.USUARIO" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="ModeloDatos.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="USUARIO_ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="ModeloDatos.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="ModeloDatos.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGISTROCORREO_VENTA_FK">
+          <End Role="VENTA" Type="ModeloDatos.VENTA" Multiplicity="1" />
+          <End Role="REGISTRO_CORREO" Type="ModeloDatos.REGISTRO_CORREO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID_VENTA" />
+            </Principal>
+            <Dependent Role="REGISTRO_CORREO">
+              <PropertyRef Name="FK_ID_VENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VENTA_TERMINAL_FK">
+          <End Role="TERMINAL" Type="ModeloDatos.TERMINAL" Multiplicity="1" />
+          <End Role="VENTA" Type="ModeloDatos.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINAL">
+              <PropertyRef Name="ID_TERMINAL" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="TERMINAL_ID_TERMINAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloDatosStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CAJA">
+            <EntityTypeMapping TypeName="ModeloDatos.CAJA">
+              <MappingFragment StoreEntitySet="CAJA">
+                <ScalarProperty Name="ID_CAJA" ColumnName="ID_CAJA" />
+                <ScalarProperty Name="TOTAL_VENDIDO" ColumnName="TOTAL_VENDIDO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="ModeloDatos.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="RUT_CL" ColumnName="RUT_CL" />
+                <ScalarProperty Name="NOMBRE_CL" ColumnName="NOMBRE_CL" />
+                <ScalarProperty Name="APE_PATERNO_CL" ColumnName="APE_PATERNO_CL" />
+                <ScalarProperty Name="APE_MATERNO_CL" ColumnName="APE_MATERNO_CL" />
+                <ScalarProperty Name="GENERO_CL" ColumnName="GENERO_CL" />
+                <ScalarProperty Name="REGION_CL" ColumnName="REGION_CL" />
+                <ScalarProperty Name="COMUNA_CL" ColumnName="COMUNA_CL" />
+                <ScalarProperty Name="PROVINCIA_CL" ColumnName="PROVINCIA_CL" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="TOTAL_GASTADO" ColumnName="TOTAL_GASTADO" />
+                <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_VENTA">
+            <EntityTypeMapping TypeName="ModeloDatos.DETALLE_VENTA">
+              <MappingFragment StoreEntitySet="DETALLE_VENTA">
+                <ScalarProperty Name="PRODUCTO_ID_PRODUCTO" ColumnName="PRODUCTO_ID_PRODUCTO" />
+                <ScalarProperty Name="VENTA_ID_VENTA" ColumnName="VENTA_ID_VENTA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="SUB_TOTAL" ColumnName="SUB_TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNCIONARIO">
+            <EntityTypeMapping TypeName="ModeloDatos.FUNCIONARIO">
+              <MappingFragment StoreEntitySet="FUNCIONARIO">
+                <ScalarProperty Name="RUT_FUN" ColumnName="RUT_FUN" />
+                <ScalarProperty Name="NOMBRE_FUN" ColumnName="NOMBRE_FUN" />
+                <ScalarProperty Name="APELLIDO_PATERNO_FUN" ColumnName="APELLIDO_PATERNO_FUN" />
+                <ScalarProperty Name="APELLIDO_MATERNO_FUN" ColumnName="APELLIDO_MATERNO_FUN" />
+                <ScalarProperty Name="GENERO_FUN" ColumnName="GENERO_FUN" />
+                <ScalarProperty Name="REGION_FUN" ColumnName="REGION_FUN" />
+                <ScalarProperty Name="COMUNA_FUN" ColumnName="COMUNA_FUN" />
+                <ScalarProperty Name="PROVINCIA_FUN" ColumnName="PROVINCIA_FUN" />
+                <ScalarProperty Name="FECHA_CONTRATO_FUN" ColumnName="FECHA_CONTRATO_FUN" />
+                <ScalarProperty Name="SUELDO_BASE_FUN" ColumnName="SUELDO_BASE_FUN" />
+                <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
+                <ScalarProperty Name="TERMINAL_ID_TERMINAL" ColumnName="TERMINAL_ID_TERMINAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="ModeloDatos.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+                <ScalarProperty Name="PROVEEDOR_ID_PROVEEDOR" ColumnName="PROVEEDOR_ID_PROVEEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="ModeloDatos.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+                <ScalarProperty Name="NOMBRE_PROVEEDOR" ColumnName="NOMBRE_PROVEEDOR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO_PROVEEDOR" ColumnName="TELEFONO_PROVEEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO_CORREO">
+            <EntityTypeMapping TypeName="ModeloDatos.REGISTRO_CORREO">
+              <MappingFragment StoreEntitySet="REGISTRO_CORREO">
+                <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+                <ScalarProperty Name="FUE_ENVIADO" ColumnName="FUE_ENVIADO" />
+                <ScalarProperty Name="FECHA_ENVIO" ColumnName="FECHA_ENVIO" />
+                <ScalarProperty Name="FK_ID_VENTA" ColumnName="FK_ID_VENTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TERMINAL">
+            <EntityTypeMapping TypeName="ModeloDatos.TERMINAL">
+              <MappingFragment StoreEntitySet="TERMINAL">
+                <ScalarProperty Name="ID_TERMINAL" ColumnName="ID_TERMINAL" />
+                <ScalarProperty Name="FECHA_ADQUISICION" ColumnName="FECHA_ADQUISICION" />
+                <ScalarProperty Name="FECHA_ULTIMA_MANTENCION" ColumnName="FECHA_ULTIMA_MANTENCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TURNO">
+            <EntityTypeMapping TypeName="ModeloDatos.TURNO">
+              <MappingFragment StoreEntitySet="TURNO">
+                <ScalarProperty Name="ID_TURNO" ColumnName="ID_TURNO" />
+                <ScalarProperty Name="HORA_INICIO" ColumnName="HORA_INICIO" />
+                <ScalarProperty Name="HORA_TERMINO" ColumnName="HORA_TERMINO" />
+                <ScalarProperty Name="CAJA_ID_CAJA" ColumnName="CAJA_ID_CAJA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="ModeloDatos.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA">
+            <EntityTypeMapping TypeName="ModeloDatos.VENTA">
+              <MappingFragment StoreEntitySet="VENTA">
+                <ScalarProperty Name="ID_VENTA" ColumnName="ID_VENTA" />
+                <ScalarProperty Name="FECHA_VENTA" ColumnName="FECHA_VENTA" />
+                <ScalarProperty Name="TOTAL_VENTA" ColumnName="TOTAL_VENTA" />
+                <ScalarProperty Name="CLIENTE_RUT" ColumnName="CLIENTE_RUT" />
+                <ScalarProperty Name="TERMINAL_ID_TERMINAL" ColumnName="TERMINAL_ID_TERMINAL" />
+                <ScalarProperty Name="CAJA_ID_CAJA" ColumnName="CAJA_ID_CAJA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ModeloDatos">
+        <EntityTypeShape EntityType="ModeloDatos.CAJA" Width="1.5" PointX="3" PointY="10.5" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.CLIENTE" Width="1.5" PointX="3" PointY="5.875" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.DETALLE_VENTA" Width="1.5" PointX="7.5" PointY="6.5" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.FUNCIONARIO" Width="1.5" PointX="3" PointY="0.75" Height="3.7109993489583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.PRODUCTO" Width="1.5" PointX="5.25" PointY="14.375" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.PROVEEDOR" Width="1.5" PointX="3" PointY="14.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.REGISTRO_CORREO" Width="1.5" PointX="7.5" PointY="9.5" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.TERMINAL" Width="1.5" PointX="0.75" PointY="3.375" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.TURNO" Width="1.5" PointX="5.25" PointY="10.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.USUARIO" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloDatos.VENTA" Width="1.5" PointX="5.25" PointY="6" Height="3.1340950520833308" IsExpanded="true" />
+        <AssociationConnector Association="ModeloDatos.TURNO_CAJA_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="11.615143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="11.615143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.VENTA_CAJA_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.501152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="10.126152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="7.5670475260416659" />
+          <ConnectorPoint PointX="5.25" PointY="7.5670475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.CLIENTE_USUARIO_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.6439925130208337" />
+          <ConnectorPoint PointX="3" PointY="7.6439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.VENTA_CLIENTE_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7210237630208329" />
+          <ConnectorPoint PointX="5.25" PointY="6.7210237630208329" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.DETALLEVENTA_PRODUCTO_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="14.376152846153847" />
+          <ConnectorPoint PointX="7.125" PointY="14.001152846153847" />
+          <ConnectorPoint PointX="7.125" PointY="7.5862939453125" />
+          <ConnectorPoint PointX="7.5" PointY="7.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.DETALLEVENTA_VENTA_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.98064697265625" />
+          <ConnectorPoint PointX="7.5" PointY="6.98064697265625" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.FUNCIONARIO_TERMINAL_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.9179996744791667" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="3.9179996744791663" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="3.9179996744791667" />
+          <ConnectorPoint PointX="3" PointY="3.9179996744791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.FUNCIONARIO_USUARIO_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.75" />
+          <ConnectorPoint PointX="2.625" PointY="6.375" />
+          <ConnectorPoint PointX="2.625" PointY="2.3027478372395827" />
+          <ConnectorPoint PointX="3" PointY="2.3027478372395827" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.PRODUCTO_PROVEEDOR_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="15.615143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="15.615143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.REGISTROCORREO_VENTA_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.07178635977564" />
+          <ConnectorPoint PointX="7.0660744349011217" PointY="9.38786079467676" />
+          <ConnectorPoint PointX="7.1839255650988791" PointY="9.5057119248745181" />
+          <ConnectorPoint PointX="7.3125" PointY="9.63428635977564" />
+          <ConnectorPoint PointX="7.3125" PointY="9.3113471538461532" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="9.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloDatos.VENTA_TERMINAL_FK" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.9393929036458326" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="4.9393929036458317" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="4.9393929036458326" />
+          <ConnectorPoint PointX="6" PointY="4.9393929036458326" />
+          <ConnectorPoint PointX="6" PointY="6" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

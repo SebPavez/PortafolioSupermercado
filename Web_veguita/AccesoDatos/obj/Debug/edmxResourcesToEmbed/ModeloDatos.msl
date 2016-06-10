@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloDatosStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CAJA">
+      <EntityTypeMapping TypeName="ModeloDatos.CAJA">
+        <MappingFragment StoreEntitySet="CAJA">
+          <ScalarProperty Name="ID_CAJA" ColumnName="ID_CAJA" />
+          <ScalarProperty Name="TOTAL_VENDIDO" ColumnName="TOTAL_VENDIDO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="ModeloDatos.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="RUT_CL" ColumnName="RUT_CL" />
+          <ScalarProperty Name="NOMBRE_CL" ColumnName="NOMBRE_CL" />
+          <ScalarProperty Name="APE_PATERNO_CL" ColumnName="APE_PATERNO_CL" />
+          <ScalarProperty Name="APE_MATERNO_CL" ColumnName="APE_MATERNO_CL" />
+          <ScalarProperty Name="GENERO_CL" ColumnName="GENERO_CL" />
+          <ScalarProperty Name="REGION_CL" ColumnName="REGION_CL" />
+          <ScalarProperty Name="COMUNA_CL" ColumnName="COMUNA_CL" />
+          <ScalarProperty Name="PROVINCIA_CL" ColumnName="PROVINCIA_CL" />
+          <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+          <ScalarProperty Name="TOTAL_GASTADO" ColumnName="TOTAL_GASTADO" />
+          <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_VENTA">
+      <EntityTypeMapping TypeName="ModeloDatos.DETALLE_VENTA">
+        <MappingFragment StoreEntitySet="DETALLE_VENTA">
+          <ScalarProperty Name="PRODUCTO_ID_PRODUCTO" ColumnName="PRODUCTO_ID_PRODUCTO" />
+          <ScalarProperty Name="VENTA_ID_VENTA" ColumnName="VENTA_ID_VENTA" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="SUB_TOTAL" ColumnName="SUB_TOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIO">
+      <EntityTypeMapping TypeName="ModeloDatos.FUNCIONARIO">
+        <MappingFragment StoreEntitySet="FUNCIONARIO">
+          <ScalarProperty Name="RUT_FUN" ColumnName="RUT_FUN" />
+          <ScalarProperty Name="NOMBRE_FUN" ColumnName="NOMBRE_FUN" />
+          <ScalarProperty Name="APELLIDO_PATERNO_FUN" ColumnName="APELLIDO_PATERNO_FUN" />
+          <ScalarProperty Name="APELLIDO_MATERNO_FUN" ColumnName="APELLIDO_MATERNO_FUN" />
+          <ScalarProperty Name="GENERO_FUN" ColumnName="GENERO_FUN" />
+          <ScalarProperty Name="REGION_FUN" ColumnName="REGION_FUN" />
+          <ScalarProperty Name="COMUNA_FUN" ColumnName="COMUNA_FUN" />
+          <ScalarProperty Name="PROVINCIA_FUN" ColumnName="PROVINCIA_FUN" />
+          <ScalarProperty Name="FECHA_CONTRATO_FUN" ColumnName="FECHA_CONTRATO_FUN" />
+          <ScalarProperty Name="SUELDO_BASE_FUN" ColumnName="SUELDO_BASE_FUN" />
+          <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
+          <ScalarProperty Name="TERMINAL_ID_TERMINAL" ColumnName="TERMINAL_ID_TERMINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="ModeloDatos.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+          <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+          <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+          <ScalarProperty Name="PROVEEDOR_ID_PROVEEDOR" ColumnName="PROVEEDOR_ID_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDOR">
+      <EntityTypeMapping TypeName="ModeloDatos.PROVEEDOR">
+        <MappingFragment StoreEntitySet="PROVEEDOR">
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+          <ScalarProperty Name="NOMBRE_PROVEEDOR" ColumnName="NOMBRE_PROVEEDOR" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO_PROVEEDOR" ColumnName="TELEFONO_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGISTRO_CORREO">
+      <EntityTypeMapping TypeName="ModeloDatos.REGISTRO_CORREO">
+        <MappingFragment StoreEntitySet="REGISTRO_CORREO">
+          <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+          <ScalarProperty Name="FUE_ENVIADO" ColumnName="FUE_ENVIADO" />
+          <ScalarProperty Name="FECHA_ENVIO" ColumnName="FECHA_ENVIO" />
+          <ScalarProperty Name="FK_ID_VENTA" ColumnName="FK_ID_VENTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TERMINAL">
+      <EntityTypeMapping TypeName="ModeloDatos.TERMINAL">
+        <MappingFragment StoreEntitySet="TERMINAL">
+          <ScalarProperty Name="ID_TERMINAL" ColumnName="ID_TERMINAL" />
+          <ScalarProperty Name="FECHA_ADQUISICION" ColumnName="FECHA_ADQUISICION" />
+          <ScalarProperty Name="FECHA_ULTIMA_MANTENCION" ColumnName="FECHA_ULTIMA_MANTENCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TURNO">
+      <EntityTypeMapping TypeName="ModeloDatos.TURNO">
+        <MappingFragment StoreEntitySet="TURNO">
+          <ScalarProperty Name="ID_TURNO" ColumnName="ID_TURNO" />
+          <ScalarProperty Name="HORA_INICIO" ColumnName="HORA_INICIO" />
+          <ScalarProperty Name="HORA_TERMINO" ColumnName="HORA_TERMINO" />
+          <ScalarProperty Name="CAJA_ID_CAJA" ColumnName="CAJA_ID_CAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="ModeloDatos.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTA">
+      <EntityTypeMapping TypeName="ModeloDatos.VENTA">
+        <MappingFragment StoreEntitySet="VENTA">
+          <ScalarProperty Name="ID_VENTA" ColumnName="ID_VENTA" />
+          <ScalarProperty Name="FECHA_VENTA" ColumnName="FECHA_VENTA" />
+          <ScalarProperty Name="TOTAL_VENTA" ColumnName="TOTAL_VENTA" />
+          <ScalarProperty Name="CLIENTE_RUT" ColumnName="CLIENTE_RUT" />
+          <ScalarProperty Name="TERMINAL_ID_TERMINAL" ColumnName="TERMINAL_ID_TERMINAL" />
+          <ScalarProperty Name="CAJA_ID_CAJA" ColumnName="CAJA_ID_CAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

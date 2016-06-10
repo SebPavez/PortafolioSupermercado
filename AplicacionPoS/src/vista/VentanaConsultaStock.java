@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vista;
 
-/**
- *
- * @author Cetecom
- */
+import AccesoDatos.DaoProducto;
+import com.google.common.primitives.Ints;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import negocio.Producto;
+
 public class VentanaConsultaStock extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaConsultaStock
-     */
     public VentanaConsultaStock() {
         initComponents();
+        cargarTabla(DaoProducto.cargarProductos());
     }
 
     /**
@@ -29,16 +24,17 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
         btnFiltrarCodigo = new javax.swing.JButton();
         btnQuitarFiltro = new javax.swing.JButton();
         txtFiltro = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
-        btnFiltrarNombre = new javax.swing.JButton();
+        btnFiltrarCategoria = new javax.swing.JButton();
+        btnOrdenarPorStock = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,11 +45,21 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProductos);
 
         btnFiltrarCodigo.setText("Filtrar por código");
+        btnFiltrarCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarCodigoActionPerformed(evt);
+            }
+        });
 
         btnQuitarFiltro.setText("Quitar filtro");
+        btnQuitarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarFiltroActionPerformed(evt);
+            }
+        });
 
         btnVolver.setText("Volver a menú principal");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +68,19 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
             }
         });
 
-        btnFiltrarNombre.setText("Filtrar por nombre");
+        btnFiltrarCategoria.setText("Filtrar por categoria");
+        btnFiltrarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarCategoriaActionPerformed(evt);
+            }
+        });
+
+        btnOrdenarPorStock.setText("Ordenar Por Stock Disponible");
+        btnOrdenarPorStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarPorStockActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +94,8 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
                     .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                     .addComponent(btnFiltrarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQuitarFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFiltrarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnFiltrarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrdenarPorStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,16 +105,18 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(46, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(btnFiltrarCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFiltrarNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(btnFiltrarCategoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnOrdenarPorStock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnQuitarFiltro)
-                        .addGap(31, 31, 31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVolver)
                         .addGap(69, 69, 69))))
         );
@@ -106,8 +127,43 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         VentanaPrincipal ventana = new VentanaPrincipal();
         ventana.setVisible(true);
-        this.dispose();        
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnFiltrarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarCodigoActionPerformed
+        if (txtFiltro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el codigo para filtrar productos.");
+        } else {
+            if (tryParseInt(txtFiltro.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "Ingrese un codigo numerico");
+            } else {
+                if (cargarTabla(DaoProducto.cargarProductosPorId(Integer.parseInt(txtFiltro.getText()))) == false) {
+                    JOptionPane.showMessageDialog(null, "No hay ningun producto con el codigo ingresado");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnFiltrarCodigoActionPerformed
+
+    private void btnFiltrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarCategoriaActionPerformed
+        if (txtFiltro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese la categoria para filtrar productos.");
+        } else {
+            if (cargarTabla(DaoProducto.cargarProductosPorCategoria(txtFiltro.getText())) == false) {
+                JOptionPane.showMessageDialog(null, "No hay ningun producto con la categoria ingresada");
+            }
+        }
+    }//GEN-LAST:event_btnFiltrarCategoriaActionPerformed
+
+    private void btnQuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarFiltroActionPerformed
+        txtFiltro.setText(new String());
+        cargarTabla(DaoProducto.cargarProductos());
+    }//GEN-LAST:event_btnQuitarFiltroActionPerformed
+
+    private void btnOrdenarPorStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarPorStockActionPerformed
+        txtFiltro.setText(new String());
+        cargarTabla(DaoProducto.cargarProductosPorStockDisponible());
+        btnOrdenarPorStock.setSelected(false);
+    }//GEN-LAST:event_btnOrdenarPorStockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,16 +179,21 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaConsultaStock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaConsultaStock.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaConsultaStock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaConsultaStock.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaConsultaStock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaConsultaStock.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaConsultaStock.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaConsultaStock.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -145,12 +206,52 @@ public class VentanaConsultaStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrarCategoria;
     private javax.swing.JButton btnFiltrarCodigo;
-    private javax.swing.JButton btnFiltrarNombre;
+    private javax.swing.JToggleButton btnOrdenarPorStock;
     private javax.swing.JButton btnQuitarFiltro;
     private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
+
+    private boolean cargarTabla(ArrayList<Producto> lista) {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Id");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+        modelo.addColumn("Categoria");
+        Producto prod[] = new Producto[lista.size()];
+        prod = lista.toArray(prod);
+        for (int i = 0; i < prod.length; i++) {
+            System.out.println("--------------");
+            Object[] fila = new Object[5];
+            fila[0] = prod[i].getId_producto();
+            fila[1] = prod[i].getNombre_producto();
+            fila[2] = prod[i].getPrecio();
+            fila[3] = prod[i].getStock();
+            fila[4] = prod[i].getCategoria();
+
+            modelo.addRow(fila);
+        }
+        tblProductos.setModel(modelo);
+        if (lista.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean tryParseInt(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }

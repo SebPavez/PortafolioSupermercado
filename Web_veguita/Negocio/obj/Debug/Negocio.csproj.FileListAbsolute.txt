@@ -1,0 +1,12 @@
+C:\Users\cetecom\Desktop\La-Veguita\Negocio\bin\Debug\Negocio.dll
+C:\Users\cetecom\Desktop\La-Veguita\Negocio\bin\Debug\Negocio.pdb
+C:\Users\cetecom\Desktop\La-Veguita\Negocio\obj\Debug\Negocio.dll
+C:\Users\cetecom\Desktop\La-Veguita\Negocio\obj\Debug\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Negocio\bin\Debug\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Negocio\bin\Debug\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Negocio\obj\Debug\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Negocio\obj\Debug\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\bin\Debug\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\bin\Debug\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\obj\Debug\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\obj\Debug\Negocio.pdb

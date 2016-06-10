@@ -1,0 +1,38 @@
+c:\users\jose meneses\documents\visual studio 2010\Projects\La-Veguita\Vista\bin\Vista.dll
+c:\users\jose meneses\documents\visual studio 2010\Projects\La-Veguita\Vista\bin\Vista.pdb
+c:\users\jose meneses\documents\visual studio 2010\Projects\La-Veguita\Vista\obj\Debug\Vista.dll
+c:\users\jose meneses\documents\visual studio 2010\Projects\La-Veguita\Vista\obj\Debug\Vista.pdb
+C:\Users\cetecom\Desktop\La-Veguita\Vista\bin\Vista.dll
+C:\Users\cetecom\Desktop\La-Veguita\Vista\bin\Vista.pdb
+C:\Users\cetecom\Desktop\La-Veguita\Vista\obj\Debug\Vista.dll
+C:\Users\cetecom\Desktop\La-Veguita\Vista\obj\Debug\Vista.pdb
+C:\Users\cetecom\Desktop\La-Veguita\Vista\bin\AccesoDatos.dll
+C:\Users\cetecom\Desktop\La-Veguita\Vista\bin\AccesoDatos.pdb
+C:\Users\cetecom\Desktop\La-Veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\Vista.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\Vista.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\AccesoDatos.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\AccesoDatos.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\bin\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\obj\Debug\Vista.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita\Vista\obj\Debug\Vista.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\Vista.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\Vista.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\AccesoDatos.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\Negocio.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\AccesoDatos.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\bin\Negocio.pdb
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\obj\Debug\Vista.dll
+F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Vista\obj\Debug\Vista.pdb
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\Vista.dll
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\Vista.pdb
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\AccesoDatos.dll
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\Negocio.dll
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\AccesoDatos.pdb
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\Negocio.pdb
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.dll
+C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.pdb

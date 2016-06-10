@@ -1,0 +1,126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MaestraClientes.master.cs"
+    Inherits="Vista.paginas.MaestraClientes" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title></title>
+    <!-- Bootstrap CSS -->
+    <link href="../componentes cliente/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="../componentes cliente/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="../componentes cliente/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="../componentes cliente/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="../componentes cliente/css/style.css" rel="stylesheet">
+    <link href="../componentes cliente/css/style-responsive.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!-- container section start -->
+    <section id="container" class="">
+      <!--header start-->
+      
+      <header class="header green-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+
+            <!--logo start-->
+            <a href="Inicio.aspx" class="logo">LA VEGUITA</a>
+            <!--logo end-->
+
+            <div class="top-nav notification-row">                
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    
+                    
+                    
+                    <!-- user login dropdown start-->
+                    <li >
+                        <asp:Button class ="btn" ID="btnCerrarSesion" runat="server" 
+                            Text="Cerrar Sesion" onclick="btnCerrarSesion_Click"></asp:Button>         
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+      </header>      
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">                
+                  <li class="">
+                      <a class="" href="Inicio.aspx">
+                          <i class="icon_house_alt"></i>
+                          <span>Inicio</span>
+                      </a>
+                  </li>
+				  <li class="">
+                      <a class="" href="MiPerfil.aspx">
+                          <i class="icon_contacts"></i>
+                          <span>Mi Perfil</span>
+                      </a>
+                  </li>      
+                  <li class="">
+                      <a class="" href="VerCatalogo.aspx">
+                          <i class="icon_book"></i>
+                          <span>Ver Catalogo</span>
+                      </a>
+                  </li>                   
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+		  <div class="row">
+				<div class="col-lg-12">
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="Inicio.aspx">Inicio</a></li>
+					</ol>
+				</div>
+			</div>
+              <!-- page start-->
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+              page here
+    </asp:ContentPlaceHolder>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+    <!-- container section end -->
+    <!-- javascripts -->
+    <script src="../componentes cliente/js/jquery.js"></script>
+    <script src="../componentes cliente/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="../componentes cliente/js/jquery.scrollTo.min.js"></script>
+    <script src="../componentes cliente/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!--custome script for all page-->
+    <script src="../componentes cliente/js/scripts.js"></script>
+    </form>
+</body>
+</html>
