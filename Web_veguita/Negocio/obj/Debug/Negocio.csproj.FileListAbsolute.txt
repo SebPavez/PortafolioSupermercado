@@ -10,3 +10,8 @@ F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\bin\Debug
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\bin\Debug\Negocio.pdb
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\obj\Debug\Negocio.dll
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\Negocio\obj\Debug\Negocio.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Negocio\bin\Debug\Negocio.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Negocio\bin\Debug\Negocio.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Negocio\obj\Debug\Negocio.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Negocio\obj\Debug\Negocio.pdb

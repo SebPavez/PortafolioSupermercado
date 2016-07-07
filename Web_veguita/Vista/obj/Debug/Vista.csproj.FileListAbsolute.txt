@@ -36,3 +36,13 @@ C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\bin\Negocio.pdb
 C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
 C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.dll
 C:\Users\jose meneses\Desktop\La-Veguita\La-Veguita\Vista\obj\Debug\Vista.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\Vista.dll.config
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\Vista.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\Vista.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\AccesoDatos.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\Negocio.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\AccesoDatos.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\bin\Negocio.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\obj\Debug\Vista.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\Vista\obj\Debug\Vista.pdb

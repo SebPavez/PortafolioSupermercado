@@ -19,3 +19,11 @@ F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\AccesoDatos\bin\D
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\AccesoDatos\obj\Debug\AccesoDatos.csprojResolveAssemblyReference.cache
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\AccesoDatos\obj\Debug\AccesoDatos.dll
 F:\Benja\2016\Portafolio\Iteracion II\La-Veguita2.1\La-Veguita\AccesoDatos\obj\Debug\AccesoDatos.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\bin\Debug\AccesoDatos.dll.config
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\bin\Debug\AccesoDatos.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\bin\Debug\AccesoDatos.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\bin\Debug\Negocio.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\bin\Debug\Negocio.pdb
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\obj\Debug\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\obj\Debug\AccesoDatos.dll
+C:\Users\sebpa\Documents\RepoIngenieria\PortafolioSupermercado\Web_veguita\AccesoDatos\obj\Debug\AccesoDatos.pdb

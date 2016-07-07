@@ -13,7 +13,7 @@ public class DaoCliente {
         boolean blnSalida = true;
         try {
             Connection conexion = ConexionOracle.getConexion();
-            String query = "select * from cliente where rut_cl = ?";
+            String query = "select * from cliente where rut_cliente = ?";
             PreparedStatement validar = conexion.prepareStatement(query);
             validar.setString(1, rut);
             ResultSet rs = validar.executeQuery();
@@ -34,7 +34,7 @@ public class DaoCliente {
         boolean blnSalida = true;
         try {
             Connection conexion = ConexionOracle.getConexion();
-            String query = "select * from cliente where correo_electronico = ?";
+            String query = "select * from cliente where correo = ?";
             PreparedStatement validar = conexion.prepareStatement(query);
             validar.setString(1, correo);
             ResultSet rs = validar.executeQuery();
@@ -55,8 +55,11 @@ public class DaoCliente {
         boolean blnSalida = false;
         try {
             Connection conexion = ConexionOracle.getConexion();
-            String query = "INSERT INTO cliente(rut_cl,nombre_cl,ape_paterno_cl,ape_materno_cl,genero_cl,region_cl,comuna_cl,provincia_cl,correo_electronico,total_gastado,USUARIO_ID_USUARIO)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO cliente(rut_cliente,nombre_cliente,apellido_paterno_cliente"
+                    + ",apellido_materno_cliente,"
+                    + "genero_cliente,region_cliente,comuna_cliente,correo"
+                    + ",USUARIO_ID_USUARIO)"
+                    + "values (?,?,?,?,?,?,?,?,?)";
             PreparedStatement registrar = conexion.prepareStatement(query);
             registrar.setString(1, dto.getRut());
             registrar.setString(2, dto.getNombres());
@@ -65,10 +68,8 @@ public class DaoCliente {
             registrar.setString(5, dto.getGenero());
             registrar.setString(6, dto.getRegion());
             registrar.setString(7, dto.getComuna());
-            registrar.setString(8, dto.getProvincia());
-            registrar.setString(9, dto.getCorreoElectronico());
-            registrar.setInt(10, dto.getTotalCompras());
-            registrar.setInt(11, DaoUsuario.obtenerUltimoId());
+            registrar.setString(8, dto.getCorreoElectronico());
+            registrar.setInt(9, DaoUsuario.obtenerUltimoId());
             registrar.execute();
             blnSalida = true;
             registrar.close();

@@ -34,7 +34,7 @@ public class DaoUsuario {
         boolean blnSalida = false;
         try {
             Connection conexion = ConexionOracle.getConexion();
-            String query = "select rut_fun from funcionario,usuario where Usuario_id_usuario = id_usuario and rut_fun = ? and contraseña = ?";
+            String query = "select rut_funcionario from funcionario fun,usuario use where fun.Usuario_id_usuario = use.id_usuario and fun.rut_funcionario = ? and use.contraseña = ?";
             PreparedStatement validar = conexion.prepareStatement(query);
             validar.setString(1, rut);
             validar.setString(2, contraseña);
@@ -56,13 +56,13 @@ public class DaoUsuario {
         Funcionario dto = new Funcionario();
         try {
             Connection conexion = ConexionOracle.getConexion();
-            String query = "select nombre_fun from funcionario where rut_fun = ?";
+            String query = "select nombre_funcionario from funcionario where rut_funcionario = ?";
             PreparedStatement validar = conexion.prepareStatement(query);
             validar.setString(1, rut);
             ResultSet rs = validar.executeQuery();
             if (rs.next()) {
                 dto.setRut(rut);
-                dto.setNombres(rs.getString("nombre_fun"));
+                dto.setNombres(rs.getString("nombre_funcionario"));
             }
             validar.close();
             conexion.close();
